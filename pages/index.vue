@@ -24,7 +24,6 @@ export default {
 
 <template>
   <h1>My ToDo App</h1>
-  <p>
   <input type="text" v-model="newTodoText" />
   <button @click="addTodo">追加</button>
   <button @click="delateTodo">完了済みを削除する</button>
@@ -35,7 +34,6 @@ export default {
       <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
     </li>
   </ul>
-  </p>
   
 </template>
 
