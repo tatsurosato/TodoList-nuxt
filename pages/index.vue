@@ -54,6 +54,7 @@ export default {
           :enable-time-picker="false"
           auto-apply
         />
+        <input type="text" placeholder="メモ">
         
 
       </p>
