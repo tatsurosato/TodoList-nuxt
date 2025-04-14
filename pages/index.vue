@@ -28,10 +28,13 @@ export default {
   <button @click="addTodo">追加</button>
   <button @click="delateTodo">完了済みを削除する</button>
   <p v-if="todos.length === 0">ToDoがまだありません！</p>
-  <ul v-else>
+  
+  <ul v-else>  
     <li v-for="todo in todos">
-      <input type="checkbox" v-model="todo.isDone" />
-      <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
+      <p class="userFrame">
+        <input type="checkbox" v-model="todo.isDone" />
+        <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
+      </p>
     </li>
   </ul>
   
@@ -44,6 +47,13 @@ body {
 
 .todo-done {
   text-decoration: line-through;
+}
+
+.userFrame {
+  border-style: solid;
+  border-color: rgb(72, 132, 253);
+  background-color: #dceefe;
+  display: inline-block;
 }
 
 </style>
