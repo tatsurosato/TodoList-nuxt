@@ -1,4 +1,9 @@
 <script>
+import { ref } from 'vue';
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+import { ja } from 'date-fns/locale';
+
 export default {
   data() {
     return {
@@ -12,6 +17,7 @@ export default {
       this.todos.push({
       isDone: false,
       text: this.newTodoText,
+      dueDate: null,
       })
         this.newTodoText = ''
       },
@@ -19,6 +25,12 @@ export default {
       this.todos = this.todos.filter(todo => !todo.isDone)
     }
   },
+  components: { VueDatePicker },
+  setup() {
+    return {
+      ja
+    }
+  }
 }
 </script>
 
@@ -34,6 +46,16 @@ export default {
       <p class="userFrame">
         <input type="checkbox" v-model="todo.isDone" />
         <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
+
+        <VueDatePicker
+          v-model="todo.dueDate"
+          :format-locale="ja"
+          format="yyyy-MM-dd"
+          :enable-time-picker="false"
+          auto-apply
+        />
+        
+
       </p>
     </li>
   </ul>
