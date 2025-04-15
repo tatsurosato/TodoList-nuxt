@@ -45,6 +45,7 @@ export default {
         isDone: false,
         text: this.newTodoText,
         dueDate: null,
+        memo: '', // メモ用のプロパティを追加
       });
       this.newTodoText = '';
       if (process.client) { // クライアントサイドでのみ実行
@@ -76,7 +77,7 @@ export default {
     <p v-if="todos.length === 0">ToDoがまだありません！</p>
     
     <ul v-else>  
-      <li v-for="todo in todos">
+      <li v-for="todo in todos" :key="todo.text">
         <p class="userFrame">
           <input type="checkbox" v-model="todo.isDone" />
           <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
@@ -88,9 +89,8 @@ export default {
             :enable-time-picker="false"
             auto-apply
           />
-          <input type="text" placeholder="メモ">
-          
-
+          <!-- メモ用の入力フィールド -->
+          <input type="text" v-model="todo.memo" placeholder="メモ" />
         </p>
       </li>
     </ul>
@@ -119,6 +119,5 @@ body {
   height: 100vh;
   width: 100%;
 }
-
 </style>
 
