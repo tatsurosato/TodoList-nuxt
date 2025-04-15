@@ -35,32 +35,33 @@ export default {
 </script>
 
 <template>
-  <h1>My ToDo App</h1>
-  <input type="text" v-model="newTodoText" />
-  <button @click="addTodo">追加</button>
-  <button @click="delateTodo">完了済みを削除する</button>
-  <p v-if="todos.length === 0">ToDoがまだありません！</p>
-  
-  <ul v-else>  
-    <li v-for="todo in todos">
-      <p class="userFrame">
-        <input type="checkbox" v-model="todo.isDone" />
-        <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
+  <div class="background">
+    <h1>My ToDo App</h1>
+    <input type="text" v-model="newTodoText" />
+    <button @click="addTodo">追加</button>
+    <button @click="delateTodo">完了済みを削除する</button>
+    <p v-if="todos.length === 0">ToDoがまだありません！</p>
+    
+    <ul v-else>  
+      <li v-for="todo in todos">
+        <p class="userFrame">
+          <input type="checkbox" v-model="todo.isDone" />
+          <span :class="{ 'todo-done': todo.isDone }">{{ todo.text }}</span>
 
-        <VueDatePicker
-          v-model="todo.dueDate"
-          :format-locale="ja"
-          format="yyyy-MM-dd"
-          :enable-time-picker="false"
-          auto-apply
-        />
-        <input type="text" placeholder="メモ">
-        
+          <VueDatePicker
+            v-model="todo.dueDate"
+            :format-locale="ja"
+            format="yyyy-MM-dd"
+            :enable-time-picker="false"
+            auto-apply
+          />
+          <input type="text" placeholder="メモ">
+          
 
-      </p>
-    </li>
-  </ul>
-  
+        </p>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style>
@@ -74,9 +75,16 @@ body {
 
 .userFrame {
   border-style: solid;
-  border-color: rgb(72, 132, 253);
-  background-color: #dceefe;
+  border-color: rgb(253, 78, 72);
+  background-color: #fedcdc;
   display: inline-block;
+}
+.background {
+  background-image: url('/images/sabaku.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
 }
 
 </style>
